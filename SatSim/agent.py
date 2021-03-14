@@ -35,7 +35,7 @@ class BLUForce(Agent):
             heading: numpy vector for the agent's direction of movement.
             vision: Radius to look around for enemy threats.
         """
-        super().__init__(unique_id, model)
+        super().__init__("blu_" + str(unique_id), model)
         self.operability = True
         self.pos = np.array(pos)
         self.speed = speed
@@ -92,7 +92,7 @@ class REDForce(Agent):
             operability: If the asset is operable
             pos: Starting position
         """
-        super().__init__(unique_id, model)
+        super().__init__("red_" + str(unique_id), model)
         self.operability = True
         self.pos = np.array(pos)
     

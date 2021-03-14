@@ -13,7 +13,8 @@ class SCS(Model):
 
     def __init__(
         self,
-        population=1,
+        blu_force=1,
+        red_force=1,
         width=100,
         height=100,
         speed=1,
@@ -22,12 +23,14 @@ class SCS(Model):
         """
         Create a new SCS model.
         Args:
-            population: Number of Agent pairs
+            blu_force: Number of Blue Attack Forces
+            red_force: Number of Red Defesne Forces
             width, height: Size of the space.
             speed: How fast should the agents move.
             vision: How far around should each agent look for its enemies
         """
-        self.population = population
+        self.blu_force = blu_force
+        self.red_force = red_force
         self.vision = vision
         self.speed = speed
         self.schedule = RandomActivation(self)
@@ -39,7 +42,7 @@ class SCS(Model):
         """
         Create self.population agents, with random positions and starting headings.
         """
-        for i in range(self.population):
+        for i in range(self.red_force):
             x_r = self.random.random() * self.space.x_max
             y_r = self.random.random() * self.space.y_max
             pos_r = np.array((x_r, y_r))
@@ -51,6 +54,7 @@ class SCS(Model):
             self.space.place_agent(red, pos_r)
             self.schedule.add(red)
             
+        for i in range(self.blu_force):
             x_b = self.random.random() * self.space.x_max
             y_b = self.random.random() * self.space.y_max
             pos_b = np.array((x_b, y_b))

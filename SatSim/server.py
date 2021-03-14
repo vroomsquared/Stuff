@@ -10,7 +10,8 @@ def force_draw(agent):
 
 force_canvas = SimpleCanvas(force_draw, 500, 500)
 model_params = {
-    "population": 1,
+    "blu_force": 1,
+    "red_force": 1,
     "width": 100,
     "height": 100,
     "speed": 2,
