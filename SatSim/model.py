@@ -4,7 +4,7 @@ from mesa import Model
 from mesa.space import ContinuousSpace
 from mesa.time import RandomActivation
 
-from .agent import BLUForce, REDForce
+from .agent import *
 
 class SCS(Model):
     """
@@ -34,14 +34,21 @@ class SCS(Model):
         self.vision = vision
         self.speed = speed
         self.schedule = RandomActivation(self)
-        self.space = ContinuousSpace(width, height, True)
+        self.space = ContinuousSpace(width, height, False) #Torus: false
         self.make_agents() # Creates Simulation
         self.running = True
 
     def make_agents(self):
         """
-        Create self.population agents, with random positions and starting headings.
+        Create self.***_force agents, with random positions and starting headings.
         """
+        blu_sat = SatSystem(
+            1,
+            self,
+            0.1, # Success Rate
+            "Blue"
+        )
+                
         for i in range(self.red_force):
             x_r = self.random.random() * self.space.x_max
             y_r = self.random.random() * self.space.y_max
@@ -66,7 +73,7 @@ class SCS(Model):
                 self.speed,
                 velocity_b,
                 self.vision,
-                red
+                blu_sat
             )
             self.space.place_agent(blu, pos_b)
             self.schedule.add(blu)

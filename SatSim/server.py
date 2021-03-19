@@ -5,13 +5,13 @@ from .SimpleContinuousModule import SimpleCanvas
 
 
 def force_draw(agent):
-    return {"Shape": "circle", "r": 2, "Filled": "true", "Color": "Red"}
+    return {"Shape": "circle", "r": 2, "Filled": "true"}
 
 
 force_canvas = SimpleCanvas(force_draw, 500, 500)
 model_params = {
-    "blu_force": 1,
-    "red_force": 1,
+    "blu_force": 2,
+    "red_force": 10,
     "width": 100,
     "height": 100,
     "speed": 2,
