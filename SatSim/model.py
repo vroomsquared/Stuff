@@ -4,7 +4,7 @@ from mesa import Model
 from mesa.space import ContinuousSpace
 from mesa.time import RandomActivation
 
-from .agent import *
+from .agents.agent import *
 
 class SCS(Model):
     """
