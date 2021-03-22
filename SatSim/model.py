@@ -4,7 +4,9 @@ from mesa import Model
 from mesa.space import ContinuousSpace
 from mesa.time import RandomActivation
 
-from .agents.agent import *
+from .agents.SatSystem import SatSystem
+from .agents.REDForce import REDForce
+from .agents.BLUForce import BLUForce
 
 class SCS(Model):
     """
@@ -41,7 +43,7 @@ class SCS(Model):
     def make_agents(self):
         """
         Create self.***_force agents, with random positions and starting headings.
-        """
+        """        
         blu_sat = SatSystem(
             1,
             self,
